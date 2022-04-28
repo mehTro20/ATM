@@ -1,5 +1,4 @@
-//let balance = 44;
-//localStorage.clear()
+
 let money = Number(localStorage.getItem("Balance"))
 !money && localStorage.setItem("Balance", 0)
 console.log(money)
@@ -33,4 +32,45 @@ function myBalance(){
 };
 
 
-//console.log(balance)
+
+
+
+// Get the modal
+var modal = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+
+function openSes(){
+    event.preventDefault()
+
+    let users = document.getElementById('uname').value;
+    let psw = document.getElementById("psw").value; 
+
+    if(users === "Mondlo" && psw === '404'){
+        let disp = document.getElementById("account");
+        
+        return (disp.style.display == "none") ?  disp.style.display = "block"
+        : disp.style.display = "block", modal.style.display = "none";
+    }
+    return alert("Incorrect username or password!")
+}
+
+function lgnBtn(){
+    var btn = document.getElementById("lgn-btn")
+    let users = document.getElementById('uname').value;
+    let psw = document.getElementById("psw").value;
+
+    if (event.target == btn){
+        if (modal.style.display = "none" && users === "" && psw === ""){
+           btn.style.display = "block"
+       } 
+        btn.style.display = "none"
+    }
+}
+

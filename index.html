@@ -10,12 +10,47 @@
 </head>
 <body>
   <h1 id="moneyLeft">Mondli Money App </h1>
-  <form id="input-form">    
-      <input type="number" placeholder="How much will you withdraw?" id="withdrawal" class="input"/><button id="withdraw-button" onclick="myWithdrawal(event)">Withdraw</button>
-      <br>
-      <input type="number" placeholder="How much are you depositing?" id="deposit" class="input"/><button id="deposit-button" onclick="myDeposit(event)">Deposit</button>
+  
+
+
+  <button id="lgn-btn" onclick="document.getElementById('id01').style.display='block', lgnBtn()" style="width:auto;">Login</button>
+
+
+  <div id="id01" class="modal">
+  
+    <form class="modal-content animate">
+      <div class="imgcontainer">
+        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+      </div>
+  
+      <div class="container">
+        <label for="uname"><b>Username</b></label>
+        <input id="uname" type="text" placeholder="Enter Username" name="uname" required>
+  
+        <label for="psw"><b>Password</b></label>
+        <input id="psw" type="password" placeholder="Enter Password" name="psw" required>
+          
+        <button type="submit" onclick="openSes()">Login</button>
+        <label>
+          <input type="checkbox" name="remember"> Remember me
+        </label>
+      </div>
     </form>
+  </div>
+  
+  
+  
+  
+  
+<div style="display: none;" id="account">
+
+  <form id="input-form">    
     <div id="yourMoney"></div>
-    <script src="/bankAccount.js"></script>
+    <input type="number" placeholder="How much will you withdraw?" id="withdrawal" class="input"/><button id="withdraw-button" onclick="myWithdrawal(event)">Withdraw</button>
+    <br>
+    <input type="number" placeholder="How much are you depositing?" id="deposit" class="input"/><button id="deposit-button" onclick="myDeposit(event)">Deposit</button>
+  </form>
+</div>
+  <script src="/bankAccount.js"></script>
 </body>
 </html>
