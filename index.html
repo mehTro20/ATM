@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -31,7 +31,7 @@
         <input id="psw" type="password" placeholder="Enter Password" name="psw" required>
           
         <button type="submit" onclick="openSes()">Login</button>
-        <label>
+        <label>JSON.parse(values)
           <input type="checkbox" name="remember"> Remember me
         </label>
       </div>
@@ -51,6 +51,30 @@
     <input type="number" placeholder="How much are you depositing?" id="deposit" class="input"/><button id="deposit-button" onclick="myDeposit(event)">Deposit</button>
   </form>
 </div>
+</body>
+</html> -->
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  <div style="display: none;">
+    <label class="name-label">
+      Enter Your Name:<input id="uname"/>
+    </label>
+    <label class="email-lable">
+      Enter Your Email:<input id="email"/>
+    </label>
+    <button type="submit" onclick="createObj()">Submit</button>
+  </div>
   <script src="/bankAccount.js"></script>
 </body>
 </html>
