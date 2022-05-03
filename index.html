@@ -1,4 +1,4 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -13,14 +13,14 @@
   
 
 
-  <button id="lgn-btn" onclick="document.getElementById('id01').style.display='block', lgnBtn()" style="width:auto;">Login</button>
-
+  <button id="lgn-btn" onclick="document.getElementById('id01').style.display='block', lgnBtns()" style="width:auto;">Login</button>
+  <button id="crt-btn" onclick="document.getElementById('create').style.display='block', lgnBtns()" style="width:auto;">Create Account</button>
 
   <div id="id01" class="modal">
   
     <form class="modal-content animate">
       <div class="imgcontainer">
-        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+        <span onclick="xbtn()" class="close" title="Close Modal">&times;</span>
       </div>
   
       <div class="container">
@@ -31,15 +31,29 @@
         <input id="psw" type="password" placeholder="Enter Password" name="psw" required>
           
         <button type="submit" onclick="openSes()">Login</button>
-        <label>JSON.parse(values)
+        <label>
           <input type="checkbox" name="remember"> Remember me
         </label>
       </div>
     </form>
   </div>
   
-  
-  
+  <!-- <div class="modal2"> -->
+    <!-- <div class="modalcontent2"> -->
+
+      
+      <div class="account-creation" id="create" style="display: none">
+        <label class="name-label">
+          Enter Your Name:<input id="username" type="text" placeholder="Name?" required/>
+        </label>
+        <label class="email-lable">
+          Enter Your Email:<input id="email" type="email" placeholder="Email?" required/>
+        </label>
+        <button type="submit" onclick="createObj(), postSubmit()">Submit</button>
+      </div>
+      <div id="successful"></div>
+    <!-- </div> -->
+  <!-- </div> -->
   
   
 <div style="display: none;" id="account">
@@ -51,12 +65,13 @@
     <input type="number" placeholder="How much are you depositing?" id="deposit" class="input"/><button id="deposit-button" onclick="myDeposit(event)">Deposit</button>
   </form>
 </div>
+<script src="/bankAccount.js"></script>
 </body>
-</html> -->
+</html> 
 
 
 
-
+<!-- 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -64,17 +79,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-</head>
-<body>
-  <div style="display: none;">
-    <label class="name-label">
-      Enter Your Name:<input id="uname"/>
-    </label>
-    <label class="email-lable">
-      Enter Your Email:<input id="email"/>
-    </label>
-    <button type="submit" onclick="createObj()">Submit</button>
-  </div>
-  <script src="/bankAccount.js"></script>
+  </head>
+  <body>
 </body>
-</html>
+</html> -->
