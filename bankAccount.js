@@ -11,9 +11,13 @@ function create_UUID(){
       
       
       //localStorage.setItem("Accounts", '[]')
-      var accounts = localStorage.getItem("Accounts")
-      console.log(typeof accounts)
+      let accounts = localStorage.getItem("Accounts")
+      console.log( accounts)
       var accs = [];
+
+
+      let createdAccounts = [JSON.parse(localStorage.getItem("Accounts"))][0];
+          console.log(createdAccounts)
       
       function createObj(){
           
@@ -21,23 +25,37 @@ function create_UUID(){
           var useremail = document.getElementById("email").value;
           var bankAcc = {name: username, email: useremail, account: create_UUID(), balance: 0}
           let arr = [];
+          let createdAccounts = [JSON.parse(localStorage.getItem("Accounts"))][0];
           console.log(bankAcc)
           
-          if (username !== "" && useremail !== ""){
+          if (createdAccounts === null){
             arr.push(bankAcc)
-          console.log(arr)
             
             let values = localStorage.getItem("Accounts") || "[]"
-           let mm = [...JSON.parse(values), ...arr]
-           return localStorage.setItem("Accounts", JSON.stringify(mm))
+            let mm = [...JSON.parse(values), ...arr]
+           return localStorage.setItem("Accounts", JSON.stringify(mm)), postSubmit()
           }
-          
-          console.log(arr)
+         else if (username !== "" && useremail !== ""){
+              for (let i = 0; i < createdAccounts.length; i++){
+                      if (useremail === createdAccounts[i].email){
+                          console.log(createdAccounts)
+                          
+                        return alert("Email already in use!")
+                }
+            }
+            arr.push(bankAcc)
+            
+            let values = localStorage.getItem("Accounts") || "[]"
+            let mm = [...JSON.parse(values), ...arr]
+           return localStorage.setItem("Accounts", JSON.stringify(mm)), postSubmit()
+          }
         };
 
 function postSubmit(){
     event.preventDefault()
-    document.getElementById('create').style.display='none'
+    let msg = document.getElementById('create');
+
+    msg.style.display='none'
 
     document.getElementById("successful").innerHTML = `
     <h1> You've successfully created an account.</h1>`
@@ -47,13 +65,8 @@ function postSubmit(){
 
 
 
-      console.log(localStorage.getItem(["Accounts"][0]))
-var clients = [
-    {name: "Bheki from Bolt", accountNo: "1234", balance: "200"}, 
-    {name: "Mufasa", accountNo: "2468", balance: "8000"}, 
-    {name: "Mohammed Ali", accountNo: "36912", balance: "1500"}
-];
-console.log(clients[0])
+      console.log(JSON.parse(accounts)[0])
+
 
 
 
@@ -109,17 +122,17 @@ function openSes(){
 
     let users = document.getElementById('uname').value;
     let psw = document.getElementById("psw").value; 
+    let createdAccounts = [JSON.parse(localStorage.getItem("Accounts"))][0];
 
-
-    // for(let i = 0; i < clients.length; i++){
-    //     for(let j = 0; j < clients.length; j++){}}
-            if(users === "Mondlo" && psw === '404'){
+    for(let i = 0; i < createdAccounts.length; i++){
+            if(users === createdAccounts[i].name && psw === createdAccounts[i].email){
                 let disp = document.getElementById("account");
         
-        return (disp.style.display == "none") ?  disp.style.display = "block"
+        return myBalance(), (disp.style.display == "none") ?  disp.style.display = "block"
         : disp.style.display = "block", modal.style.display = "none";
+            }
     }
-    return alert("Incorrect username or password!")
+    return alert("Incorrect username or email!")
 }
 
 function lgnBtns(){
@@ -144,3 +157,4 @@ function xbtn(){
     document.getElementById('crt-btn').style.display='block'
 }
 
+//console.log(Object.values(JSON.parse(localStorage.getItem("Accounts"))[6]))
