@@ -33,7 +33,7 @@ function create_UUID(){
             
             let values = localStorage.getItem("Accounts") || "[]"
             let mm = [...JSON.parse(values), ...arr]
-           return localStorage.setItem("Accounts", JSON.stringify(mm)), postSubmit()
+           return localStorage.setItem("Accounts", JSON.stringify(mm)), postSubmit()//, openSesCrtion()
           }
          else if (username !== "" && useremail !== ""){
               for (let i = 0; i < createdAccounts.length; i++){
@@ -47,7 +47,7 @@ function create_UUID(){
             
             let values = localStorage.getItem("Accounts") || "[]"
             let mm = [...JSON.parse(values), ...arr]
-           return localStorage.setItem("Accounts", JSON.stringify(mm)), postSubmit()
+           return localStorage.setItem("Accounts", JSON.stringify(mm)), postSubmit()//, openSesCrtion()
           }
         };
 
@@ -58,14 +58,16 @@ function postSubmit(){
     msg.style.display='none'
 
     document.getElementById("successful").innerHTML = `
-    <h1> You've successfully created an account.</h1>`
+    <h1> You've successfully created an account.</h1>
+    `
+    return openSesCrtion()
+
 }
 
 
 
 
-
-      console.log(JSON.parse(accounts)[0])
+//console.log(JSON.parse(accounts)[0].email)
 
 
 
@@ -86,14 +88,28 @@ function myWithdrawal(event){
 return money, myBalance()
 };
 
+// let moola = createdAccounts[0].balance
+// for (let i = 0; i < createdAccounts.length; i++){
+//     let moola = createdAccounts[i].balance}
+//console.log(moola)
+
 function myDeposit(event){
     event.preventDefault()
+    const oldStuff = JSON.parse(localStorage.getItem('Accounts'));
+
+
 
     let amoun = Number(document.getElementById("deposit").value);
-    money = money + amoun
-    localStorage.setItem("Balance", money)
-    return money, myBalance()
+    moola = moola + amoun
+    let neew = localStorage.setItem('Accounts', JSON.stringify([...oldStuff, moola]))
+    console.log(moola)
+    return neew, myBalance()
 };
+
+// let values = localStorage.getItem("Accounts") || "[]"
+// let mm = [...JSON.parse(values), ...arr]
+// return localStorage.setItem("Accounts", JSON.stringify(mm)), postSubmit()
+
 
 function myBalance(){
     document.getElementById("yourMoney").innerHTML = `
@@ -115,7 +131,7 @@ window.onclick = function(event) {
         modal.style.display = "none";
     }
 }
-
+//console.log(JSON.parse(localStorage.getItem("Accounts"))[1])
 
 function openSes(){
     event.preventDefault()
@@ -133,6 +149,14 @@ function openSes(){
             }
     }
     return alert("Incorrect username or email!")
+}
+
+function openSesCrtion(){
+
+    let disp = document.getElementById("account");
+
+    return myBalance(), (disp.style.display == "none") ?  disp.style.display = "block"
+        : disp.style.display = "block", modal.style.display = "none";
 }
 
 function lgnBtns(){
@@ -156,5 +180,12 @@ function xbtn(){
     document.getElementById('lgn-btn').style.display='block'
     document.getElementById('crt-btn').style.display='block'
 }
-
+const nextB = {
+    balance : 40
+}
 //console.log(Object.values(JSON.parse(localStorage.getItem("Accounts"))[6]))
+// console.log( JSON.parse(localStorage.getItem('Accounts')))
+// console.log(localStorage.setItem("Accounts", JSON.stringify([...JSON.parse(localStorage.getItem('Accounts')), nextB])))
+
+let keyname = window.localStorage.key(0)
+console.log(keyname)

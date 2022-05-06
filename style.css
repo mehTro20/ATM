@@ -69,3 +69,14 @@ body{
     cursor: pointer;
     width: 100%;
   }
+
+  #exit-btn{
+    background-color: #690101;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 10%;
+    margin-right: 90%;
+  }
